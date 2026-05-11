@@ -1,0 +1,64 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "taches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "creePar",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "echeance",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "shifts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "staffId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "plansTraitement",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "medicinId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "taches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "creePar",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "priorite",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}
