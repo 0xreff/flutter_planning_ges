@@ -54,10 +54,17 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to scan for barcodes and QR codes, this app requires permission to access the camera.</string>
+    <string>please enable camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload data, this app requires permission to access the photo library.</string>
-
+    <string>photo library</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+    <string>please enable bluetouth</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>please enable your micro</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>please enable location</string>
+	<key>NSCalendarsUsageDescription</key>
+    <string>enable calnder</string>
 
 
 

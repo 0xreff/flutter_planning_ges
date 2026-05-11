@@ -83,3 +83,5 @@ export '/dossiermedical/create_ordonnance/create_ordonnance_widget.dart'
     show CreateOrdonnanceWidget;
 export '/produit/new_product/new_product_widget.dart' show NewProductWidget;
 export '/produit/aaddd/aaddd_widget.dart' show AadddWidget;
+export '/planning/teleconsultation/teleconsultation_widget.dart'
+    show TeleconsultationWidget;

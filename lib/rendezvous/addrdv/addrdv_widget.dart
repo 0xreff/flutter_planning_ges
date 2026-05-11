@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1765,15 +1764,15 @@ class _AddrdvWidgetState extends State<AddrdvWidget> {
                         onPressed: () async {
                           await AppointementsRecord.collection.doc().set({
                             ...createAppointementsRecordData(
-                              patientId: currentUserReference?.id,
-                              doctorId: currentUserReference?.id,
-                              slotId: '',
                               status: 'en attente',
                               date: _model.datePicked1,
                               startTime: dateTimeFormat(
                                   "MMMMEEEEd", _model.datePicked2),
                               reason: _model.textController.text,
                               notes: _model.textController.text,
+                              type: '',
+                              doctorId: _model.dropDownmedecinValue,
+                              slotId: _model.dropDownspecialiteValue,
                             ),
                             ...mapToFirestore(
                               {

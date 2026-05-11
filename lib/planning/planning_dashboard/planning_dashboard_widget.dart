@@ -507,57 +507,44 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                         ),
                       ],
                     ),
-                    StreamBuilder<List<TachesRecord>>(
-                      stream: queryTachesRecord(
-                        queryBuilder: (tachesRecord) => tachesRecord
-                            .where(
-                              'creePar',
-                              isEqualTo: currentUserReference,
-                            )
-                            .where(
-                              'priorite',
-                              isEqualTo: 'haute',
-                            )
-                            .where(
-                              'status',
-                              isNotEqualTo: 'terminé',
+                    ListView(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: StreamBuilder<List<TachesRecord>>(
+                            stream: queryTachesRecord(
+                              singleRecord: true,
                             ),
-                        singleRecord: true,
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                        List<TachesRecord> listViewTachesRecordList =
-                            snapshot.data!;
-                        // Return an empty Container when the item does not exist.
-                        if (snapshot.data!.isEmpty) {
-                          return Container();
-                        }
-                        final listViewTachesRecord =
-                            listViewTachesRecordList.isNotEmpty
-                                ? listViewTachesRecordList.first
-                                : null;
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<TachesRecord> containerTachesRecordList =
+                                  snapshot.data!;
+                              // Return an empty Container when the item does not exist.
+                              if (snapshot.data!.isEmpty) {
+                                return Container();
+                              }
+                              final containerTachesRecord =
+                                  containerTachesRecordList.isNotEmpty
+                                      ? containerTachesRecordList.first
+                                      : null;
 
-                        return ListView(
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: InkWell(
+                              return InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
@@ -602,13 +589,13 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                                 height: 12.0,
                                                 decoration: BoxDecoration(
                                                   color: () {
-                                                    if (listViewTachesRecord
+                                                    if (containerTachesRecord
                                                             ?.priorite ==
-                                                        'haute') {
+                                                        'Haute') {
                                                       return Color(0xFFE24B4A);
-                                                    } else if (listViewTachesRecord
+                                                    } else if (containerTachesRecord
                                                             ?.priorite ==
-                                                        'moyen') {
+                                                        'Moyen') {
                                                       return Color(0xFFEF9F27);
                                                     } else {
                                                       return Color(0xFF11DD99);
@@ -630,8 +617,8 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                             ),
                                             Text(
                                               valueOrDefault<String>(
-                                                listViewTachesRecord?.titre,
-                                                'titre',
+                                                containerTachesRecord?.titre,
+                                                't',
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -732,9 +719,9 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                                                   0.0),
                                                       child: Text(
                                                         dateTimeFormat(
-                                                            "d/M/y",
-                                                            listViewTachesRecord!
-                                                                .createdAt!),
+                                                            "EEEE",
+                                                            containerTachesRecord!
+                                                                .echeance!),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -780,13 +767,13 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                                 height: 14.73,
                                                 decoration: BoxDecoration(
                                                   color: () {
-                                                    if (listViewTachesRecord
+                                                    if (containerTachesRecord
                                                             .priorite ==
-                                                        'haute') {
+                                                        'Haute') {
                                                       return Color(0xFFFCEBEB);
-                                                    } else if (listViewTachesRecord
-                                                                .priorite !=
-                                                            '') {
+                                                    } else if (containerTachesRecord
+                                                            .priorite ==
+                                                        'Moyen') {
                                                       return Color(0xFFFAEEDA);
                                                     } else {
                                                       return FlutterFlowTheme
@@ -800,9 +787,9 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                                 ),
                                                 child: Text(
                                                   valueOrDefault<String>(
-                                                    listViewTachesRecord
+                                                    containerTachesRecord
                                                         .priorite,
-                                                    'priorite',
+                                                    't',
                                                   ),
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
@@ -820,14 +807,14 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color: () {
-                                                          if (listViewTachesRecord
+                                                          if (containerTachesRecord
                                                                   .priorite ==
-                                                              'haute') {
+                                                              'Haute') {
                                                             return Color(
                                                                 0xFFA32D2D);
-                                                          } else if (listViewTachesRecord
+                                                          } else if (containerTachesRecord
                                                                   .priorite ==
-                                                              'moyen') {
+                                                              'Moyen') {
                                                             return Color(
                                                                 0xFF633806);
                                                           } else {
@@ -854,11 +841,11 @@ class _PlanningDashboardWidgetState extends State<PlanningDashboardWidget> {
                                     ].divide(SizedBox(height: 8.0)),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ],
-                        );
-                      },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ].divide(SizedBox(height: 16.0)),
                 ),

@@ -503,6 +503,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
         builder: (context, params) => AadddWidget(),
       ),
       FFRoute(
+        name: TeleconsultationWidget.routeName,
+        path: TeleconsultationWidget.routePath,
+        builder: (context, params) => TeleconsultationWidget(),
+      ),
+      FFRoute(
         name: $in_app_review_library_y5nqfg.HomePageWidget.routeName,
         path: $in_app_review_library_y5nqfg.HomePageWidget.routePath,
         builder: (context, params) =>

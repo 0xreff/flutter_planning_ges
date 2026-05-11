@@ -4,6 +4,10 @@ import 'listerdv_widget.dart' show ListerdvWidget;
 import 'package:flutter/material.dart';
 
 class ListerdvModel extends FlutterFlowModel<ListerdvWidget> {
+  ///  Local state fields for this page.
+
+  String searchText = 'Confirm';
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.

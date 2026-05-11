@@ -179,7 +179,10 @@ class _UserProductsWidgetState extends State<UserProductsWidget> {
                                           .map(
                                             (record) =>
                                                 TextSearchItem.fromTerms(
-                                                    record, [record.name]),
+                                                    record, [
+                                              record.name,
+                                              record.type
+                                            ]),
                                           )
                                           .toList(),
                                     )
@@ -244,8 +247,10 @@ class _UserProductsWidgetState extends State<UserProductsWidget> {
                                               records
                                                   .map(
                                                     (record) => TextSearchItem
-                                                        .fromTerms(record,
-                                                            [record.name]),
+                                                        .fromTerms(record, [
+                                                      record.name,
+                                                      record.type
+                                                    ]),
                                                   )
                                                   .toList(),
                                             )

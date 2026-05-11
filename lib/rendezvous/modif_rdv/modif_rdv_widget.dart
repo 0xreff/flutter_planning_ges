@@ -658,7 +658,9 @@ class _ModifRdvWidgetState extends State<ModifRdvWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               await currentUserReference!
-                                  .update(createUsersRecordData());
+                                  .update(createUsersRecordData(
+                                updatedAt: _model.calendarSelectedDay?.start,
+                              ));
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

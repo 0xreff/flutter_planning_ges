@@ -481,7 +481,7 @@ class CreateNewSheetCall {
 
 class ChatbotCall {
   static Future<ApiCallResponse> call({
-    String? apiKey = 'AIzaSyDDIsEao_5f7X7q7SRR0U5c777cwqhk3oc',
+    String? apiKey = 'AIzaSyDeFp4Bbw6LWoQiTYVU-jVQ2thm5yDUMx4',
     String? prompt = '',
   }) async {
     final ffApiRequestBody = '''
@@ -646,7 +646,7 @@ class StripPaymentCall {
       callType: ApiCallType.POST,
       headers: {
         'Authorization':
-            'Bearer sk_test_51SeOuHFUrlRetoI0FoRz6rhcmiuOVm7d78iGy0i0T6gAU2pUEOHdgt6GtZsr7bk7Ogcv2njpdHABiKHoEVf5kD2a007uCVvcwc',
+            'Bearer sk_test_51TQxvMR5qqPJaxGyDwhQuu9SWlQVbpk7heLfzAJrlZJz2ZHUgRUmD4Gec7Uw3A4S3wE7T1gnqLKvgqcjBhBnKiFG00kHmemI9Y',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       params: {

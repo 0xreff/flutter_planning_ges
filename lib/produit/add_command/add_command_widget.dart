@@ -944,7 +944,8 @@ class _AddCommandWidgetState extends State<AddCommandWidget> {
                     productName: widget.product?.name,
                     fullName: _model.fullNameTextController.text,
                     quantity: int.tryParse(_model.quantityTextController.text),
-                    total: 200.0,
+                    total: functions.calculateTotal(widget.product!.price,
+                        int.parse(_model.quantityTextController.text)),
                     notes: _model.notesTextController.text,
                     payMethod: _model.payMethValue,
                     status: 'Pending',
@@ -955,7 +956,7 @@ class _AddCommandWidgetState extends State<AddCommandWidget> {
                             int.parse(_model.quantityTextController.text))
                         .toString(),
                     currency: 'eur',
-                    description: 'medicament',
+                    description: 'new command ',
                   );
 
                   ScaffoldMessenger.of(context).showSnackBar(

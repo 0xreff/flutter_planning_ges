@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -534,14 +533,7 @@ class _ListeTachesWidgetState extends State<ListeTachesWidget> {
                   ),
                 ),
                 StreamBuilder<List<TachesRecord>>(
-                  stream: queryTachesRecord(
-                    queryBuilder: (tachesRecord) => tachesRecord
-                        .where(
-                          'creePar',
-                          isEqualTo: currentUserReference,
-                        )
-                        .orderBy('echeance'),
-                  ),
+                  stream: queryTachesRecord(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -576,7 +568,8 @@ class _ListeTachesWidgetState extends State<ListeTachesWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              context.pushNamed(AjouterTacheWidget.routeName);
+                              context
+                                  .pushNamed(TeleconsultationWidget.routeName);
                             },
                             child: Container(
                               width: double.infinity,
@@ -616,11 +609,11 @@ class _ListeTachesWidgetState extends State<ListeTachesWidget> {
                                               color: () {
                                                 if (listViewTachesRecord
                                                         .priorite ==
-                                                    'haute') {
+                                                    'Haute') {
                                                   return Color(0xFFE24B4A);
                                                 } else if (listViewTachesRecord
                                                         .priorite ==
-                                                    'moyen') {
+                                                    'Moyen') {
                                                   return Color(0xFFEF9F27);
                                                 } else {
                                                   return Color(0xFF11DD99);
@@ -731,7 +724,7 @@ class _ListeTachesWidgetState extends State<ListeTachesWidget> {
                                                           5.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     dateTimeFormat(
-                                                        "d/M/y",
+                                                        "EEEE",
                                                         listViewTachesRecord
                                                             .echeance!),
                                                     style: FlutterFlowTheme.of(

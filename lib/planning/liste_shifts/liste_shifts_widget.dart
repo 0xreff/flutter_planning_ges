@@ -489,47 +489,115 @@ class _ListeShiftsWidgetState extends State<ListeShiftsWidget> {
                                 listViewShiftsRecordList[listViewIndex];
                             return Padding(
                               padding: EdgeInsets.all(12.0),
-                              child: Container(
-                                width: double.infinity,
-                                height: 110.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                    color: Color(0xFFE8E8E8),
-                                    width: 0.5,
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed(
+                                      TeleconsultationWidget.routeName);
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 110.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    border: Border.all(
+                                      color: Color(0xFFE8E8E8),
+                                      width: 0.5,
+                                    ),
                                   ),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 10.0, 0.0, 0.0),
-                                              child: Icon(
-                                                Icons.access_time,
-                                                color: Color(0xFF185FA5),
-                                                size: 25.0,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.0, 10.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  Icons.access_time,
+                                                  color: Color(0xFF185FA5),
+                                                  size: 25.0,
+                                                ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 5.0, 0.0, 0.0),
+                                                child: Text(
+                                                  listViewShiftsRecord
+                                                      .heureDebut,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .plusJakartaSans(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF042C53),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8.0, 2.0, 8.0, 2.0),
+                                            child: Container(
+                                              width: 80.0,
+                                              height: 28.6,
+                                              decoration: BoxDecoration(
+                                                color: () {
+                                                  if (listViewShiftsRecord
+                                                          .status ==
+                                                      'en cours') {
+                                                    return Color(0xFFE6F1FB);
+                                                  } else if (listViewShiftsRecord
+                                                          .status ==
+                                                      'terminé') {
+                                                    return Color(0xFFE1F5EE);
+                                                  } else {
+                                                    return Color(0xFFFAEEDA);
+                                                  }
+                                                }(),
+                                                borderRadius:
+                                                    BorderRadius.circular(10.0),
+                                              ),
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
                                               child: Text(
-                                                listViewShiftsRecord.heureDebut,
+                                                listViewShiftsRecord.status,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -544,8 +612,23 @@ class _ListeShiftsWidgetState extends State<ListeShiftsWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color:
-                                                              Color(0xFF042C53),
+                                                          color: () {
+                                                            if (listViewShiftsRecord
+                                                                    .status ==
+                                                                'en cours') {
+                                                              return Color(
+                                                                  0xFF042C53);
+                                                            } else if (listViewShiftsRecord
+                                                                    .status ==
+                                                                'terminé') {
+                                                              return Color(
+                                                                  0xFF085041);
+                                                            } else {
+                                                              return Color(
+                                                                  0xFF633806);
+                                                            }
+                                                          }(),
+                                                          fontSize: 10.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -557,105 +640,74 @@ class _ListeShiftsWidgetState extends State<ListeShiftsWidget> {
                                                         ),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 2.0, 8.0, 2.0),
-                                          child: Container(
-                                            width: 80.0,
-                                            height: 28.6,
-                                            decoration: BoxDecoration(
-                                              color: () {
-                                                if (listViewShiftsRecord
-                                                        .status ==
-                                                    'en cours') {
-                                                  return Color(0xFFE6F1FB);
-                                                } else if (listViewShiftsRecord
-                                                        .status ==
-                                                    'terminé') {
-                                                  return Color(0xFFE1F5EE);
-                                                } else {
-                                                  return Color(0xFFFAEEDA);
-                                                }
-                                              }(),
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Text(
-                                              listViewShiftsRecord.status,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts
-                                                            .plusJakartaSans(
+                                          ),
+                                        ].divide(SizedBox(width: 6.0)),
+                                      ),
+                                      Divider(
+                                        thickness: 0.5,
+                                        color: Color(0xFFF0F0F0),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.0, 0.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  Icons.local_hospital,
+                                                  color: Color(0xFF888888),
+                                                  size: 27.0,
+                                                ),
+                                              ),
+                                              Text(
+                                                listViewShiftsRecord.service,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .plusJakartaSans(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF444444),
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color: () {
-                                                          if (listViewShiftsRecord
-                                                                  .status ==
-                                                              'en cours') {
-                                                            return Color(
-                                                                0xFF042C53);
-                                                          } else if (listViewShiftsRecord
-                                                                  .status ==
-                                                              'terminé') {
-                                                            return Color(
-                                                                0xFF085041);
-                                                          } else {
-                                                            return Color(
-                                                                0xFF633806);
-                                                          }
-                                                        }(),
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(width: 6.0)),
-                                    ),
-                                    Divider(
-                                      thickness: 0.5,
-                                      color: Color(0xFFF0F0F0),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 0.0, 0.0),
-                                              child: Icon(
-                                                Icons.local_hospital,
-                                                color: Color(0xFF888888),
-                                                size: 27.0,
                                               ),
-                                            ),
-                                            Text(
-                                              listViewShiftsRecord.service,
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              dateTimeFormat("yMMMd",
+                                                  listViewShiftsRecord.date!),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -674,7 +726,7 @@ class _ListeShiftsWidgetState extends State<ListeShiftsWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF444444),
+                                                            Color(0xFF999999),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -688,49 +740,11 @@ class _ListeShiftsWidgetState extends State<ListeShiftsWidget> {
                                                                 .fontStyle,
                                                       ),
                                             ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            dateTimeFormat("yMMMd",
-                                                listViewShiftsRecord.date!),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts
-                                                      .plusJakartaSans(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFF999999),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ].divide(SizedBox(height: 10.0)),
+                                        ],
+                                      ),
+                                    ].divide(SizedBox(height: 10.0)),
+                                  ),
                                 ),
                               ),
                             );
